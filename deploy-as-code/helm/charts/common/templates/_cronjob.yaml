@@ -1,6 +1,6 @@
 {{- define "common.cronjob" -}}
 {{- if .Capabilities.APIVersions.Has "batch/v1beta1" }}
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 {{- else }}
 apiVersion: batch/v2alpha1
 {{- end }}
@@ -35,13 +35,9 @@ spec:
           - name: {{ template "common.name" . }}
             image: {{ template "common.image" (dict "Values" $.Values "repository" .Values.image.repository "tag" .Values.image.tag) }}
             imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.command }}  
-            command:
-                {{- toYaml .Values.command  | nindent 12 }} 
-          {{- end }}   
           {{- if .Values.args }}            
             args:
-                {{- toYaml .Values.args | nindent 12 }}
+            {{- toYaml .Values.args | nindent 12 }}
           {{- end }}             
             ports:
               - name: http

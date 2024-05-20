@@ -1,0 +1,86 @@
+version: v1.0
+modules:
+  - name: m_backbone
+    services:
+      - zookeeper-v2
+      - kafka-v2
+      - kafka-connect
+      - kafka-connect-restart-tasks
+      - elasticsearch-master
+      - elasticsearch-data
+      - kibana
+  - name: authn-authz
+    services:
+      - redis
+      - ingress-nginx
+      - cert-manager
+      - zuul:master-moz-impel-ratelimiter-1760f3be7b-1
+  - name: core
+    dependencies:
+      - "backbone"
+      - "authn-authz"
+      - "frontend"
+    services:
+      - egovio/egov-accesscontrol:v1.1.3-72f8a8f87b-24
+      - egovio/egov-enc-service:v1.1.2-72f8a8f87b-9
+      - egovio/egov-filestore:v1.2.4-72f8a8f87b-10
+      - egovio/egov-localization:v1.1.3-72f8a8f87b-6
+      - egovio/egov-idgen:v1.2.3-72f8a8f87b-7
+      - egovio/egov-indexer:master-impel-4e1c6763cf-45
+      - egovio/egov-location:master-impel-60bd931a97-6
+      - egovio/egov-mdms-service:v1.3.2-72f8a8f87b-12
+      - egovio/egov-notification-mail:health-digit-master-6865af2823-2
+      - egovio/egov-otp:v1.2.2-72f8a8f87b-12
+      #      - egovio/egov-persister:v1.1.4-72f8a8f87b-6
+      - egovio/egov-persister:v1.1.5-3371bc2-5
+      - egovio/egov-url-shortening:v1.1.2-1715164454-3
+      - egovio/egov-user:health-digit-master-c7e4f3147b-7
+      - egovio/user-otp:health-digit-master-dca3efde85-7
+      - egovio/egov-workflow-v2:v1.2.1-df98ec3c35-2
+      - egovio/report:v1.3.4-96b24b0d72-16
+      - egovio/egov-document-uploader:v1.1.0-75d461a4d2-4
+      - egovio/service-request:master-impel-198c6d78f8-11
+      - egovio/pgr-services:master-impel-afa361c92a-13
+      - egovio/playground:11.19
+      - egovio/audit-service:audit-heatlh-40b1a4018a-1
+      - egovio/error-handler:master-impel-dump-5022b7acff-1
+  - name: business
+    dependencies:
+      - "core"
+    services:
+      - egovio/egf-master:v1.1.3-72f8a8f87b-15
+      - egovio/egov-hrms:health-lib-dev-6dd47e1011-79
+  - name: "frontend"
+    dependencies:
+      - "business"
+    services:
+      - egovio/citizen:v1.8.0-b078fa041d-97
+      - egovio/employee:v1.8.0-2ac8314b2f-116
+      - egovio/digit-ui:master-impel-liberia-9d3e2d92c2-157
+  - name: m_dss   #dss
+    dependencies:
+      - "frontend"
+      - "core"
+      - "business"
+    services:
+      - egovio/dashboard-analytics:master-impel-47640b6456-44
+      - egovio/dashboard-ingest:v1.1.4-72f8a8f87b-10
+      - egovio/dss-dashboard:v1.8.0-0d70d60e63-53
+  - name: m_health
+    dependencies:
+      - "backbone"
+      - "authn-authz"
+      - "core"
+    services:
+      # - egovio/facility:v1.0.0-a51bee1435-19
+      - egovio/facility:liberia-impel-12b5a41b15-49
+      - egovio/product:master-impel-9e32e9c097-22
+      - egovio/individual:liberia-impel-a6b7c7203c-197
+      - egovio/transformer:master-impel-1c43e0eeaa-179
+      - egovio/stock:master-impel-2ea4712b0d-76
+      - egovio/household:master-impel-fc710d7583-110
+      - egovio/project:liberia-impel-2b621706dd-202
+      - egovio/hcm-moz-impl:attendance_csv_v2-0166976-372
+      - egovio/egov-mdms-create:develop-3a53c3b-3
+      - egovio/referralmanagement:master-impel-c3367d8067-116
+      - egovio/attendance:master-impel-ea8682f3-55

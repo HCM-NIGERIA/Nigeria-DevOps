@@ -5,7 +5,7 @@ labels:
 cron:
   schedule: "45 18 * * *"  
 # Container Configs
-namespace: es-cluster-infra
+namespace: logging
 image:
   repository: "bobrik/curator"
   tag: 5.6.0

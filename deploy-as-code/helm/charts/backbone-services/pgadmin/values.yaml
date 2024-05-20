@@ -7,9 +7,9 @@ namespace: playground
 ingress:
   enabled: true
   context: "pgadmin"
-  # additionalAnnotations: |
-  #   nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
-  #   nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth 
+  additionalAnnotations: |
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+        proxy_set_header X-Script-Name /pgadmin;
 
 # Init Containers Configs
 initContainers: {}
@@ -41,3 +41,23 @@ env: |
     value: {{ .Values.httpPort | quote }}
   - name: SCRIPT_NAME
     value: {{ .Values.serverBasePath | quote }} 
+  - name: PGADMIN_DEFAULT_EMAIL
+    valueFrom:
+      secretKeyRef:
+        key: admin-email
+        name: pgadmin
+  - name: PGADMIN_DEFAULT_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: admin-password
+        name: pgadmin
+  - name: PGADMIN_READ_EMAIL
+    valueFrom:
+      secretKeyRef:
+        key: read-email
+        name: pgadmin
+  - name: PGADMIN_READ_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: read-password
+        name: pgadmin

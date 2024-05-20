@@ -53,11 +53,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
-  - name: EGOV_BPA_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: bpa-services
   - name: WORKFLOW_CONTEXT_PATH
     valueFrom:
       configMapKeyRef:
@@ -83,13 +78,6 @@ env: |
     value: {{ index .Values "java-args" | quote }}
   - name: SERVER_PORT
     value: "8080"
-  {{- if index .Values "java-debug" }}
-  - name: JAVA_ENABLE_DEBUG
-    value: {{ index .Values "java-debug" | quote }}
-  {{- else }}
-  - name: JAVA_ENABLE_DEBUG
-    value: "false"
-  {{- end }}
   - name: SECURITY_BASIC_ENABLED
     value: "false"  
   - name: MANAGEMENT_SECURITY_ENABLED

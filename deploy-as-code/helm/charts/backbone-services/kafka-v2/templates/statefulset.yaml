@@ -117,11 +117,26 @@ spec:
         - name: "KAFKA_MIN_INSYNC_REPLICAS"
           value: {{ .Values.minInsyncReplicas | quote }}
         - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
-          value: {{ .Values.offsetsReplicationFactor | quote }}
-        {{- if .Values.jmx.port }}
-        - name: KAFKA_JMX_PORT
-          value: "{{ .Values.jmx.port }}"
-        {{- end }}   
+          value: {{ .Values.offsetsReplicationFactor | quote }} 
+        - name: KAFKA_MAX_REQUEST_SIZE
+          value: {{ .Values.maxRequestSize | quote }} 
+        - name: KAFKA_MAX_MESSAGE_BYTES
+          value: {{ .Values.maxMessageBytes | quote }} 
+        - name: KAFKA_REPLICA_FETCH_MAX_BYTES
+          value: {{ .Values.maxReplicaFetchMaxBytes | quote }} 
+        - name: KAFKA.MAX_PARTITION_FETCH_BYTES
+          value: {{ .Values.maxPartitionFetchBytes | quote }} 
+        - name: KAFKA_REQUEST_TIMEOUT_MS
+          value: {{ .Values.requestTimeoutMs | quote }}
+        - name: KAFKA_HEARTBEAT_INTERVAL_MS
+          value: {{ .Values.heartbeatIntervalMs | quote }}
+        - name: KAFKA_MAX_POLL_INTERVAL_MS
+          value: {{ .Values.maxPollIntervalMs | quote }}
+        - name: KAFKA_MAX_POLL_RECORDS
+          value: {{ .Values.maxPollRecords | quote }}
+        - name: KAFKA_SESSION_TIMEOUT_MS
+          value: {{ .Values.sessionTimeoutMs | quote }}
+
         # This is required because the Downward API does not yet support identification of
         # pod numbering in statefulsets. Thus, we are required to specify a command which
         # allows us to extract the pod ID for usage as the Kafka Broker ID.

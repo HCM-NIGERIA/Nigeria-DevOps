@@ -32,7 +32,7 @@ spec:
  azureDisk:
     cachingMode: ReadWrite
     diskName: {{ index $.Values "persistence" "azure" $idx "diskName" }}
-    diskURI: {{ index $.Values "persistence" "azure" $idx "diskUri" }}
+    diskURI: {{ index $.Values "persistence" "azure" $idx "diskURI" }}
     kind: Managed
     fsType: ext4 
 {{- end }}     

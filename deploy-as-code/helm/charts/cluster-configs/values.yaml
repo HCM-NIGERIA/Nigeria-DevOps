@@ -22,7 +22,7 @@ cluster-configs:
 
   configmaps:
     egov-config:
-      namespace: [ egov , monitoring]
+      namespace: [ egov ]
       name: egov-config
       server-tomcat-max-connections: "500"
       server-tomcat-max-threads: "10"
@@ -32,7 +32,11 @@ cluster-configs:
 
     egov-service-host:    
       name: egov-service-host
-      namespace: [ egov, monitoring ] 
+      namespace: [ egov ]
+
+    hcm-moz-impl:
+      name: hcm-moz-impl
+      namespace: [egov]
 
   secrets:
     db: 
@@ -45,15 +49,7 @@ cluster-configs:
 
     egov-filestore: 
       namespace: egov
-      name: egov-filestore
-
-    pgr-ai-chatbot:
-      namespace: egov
-      name: pgr-ai-chatbot
-      
-    egov-filestore-azure: 
-      namespace: egov
-      name: egov-filestore-azure     
+      name: egov-filestore     
       
     egov-location: 
       namespace: egov
@@ -81,7 +77,7 @@ cluster-configs:
 
     git-sync: 
       namespace: [ egov ]
-      name: git-creds
+      name: git-creds   
 
     kibana: 
       namespace: egov
@@ -90,10 +86,6 @@ cluster-configs:
     kibana-infra: 
       namespace: egov
       name: kibana-infra-creds     
-
-    pgadmin: 
-      namespace: playground
-      name: pgadmin
 
     egov-si-microservice:
       namespace: egov
@@ -118,6 +110,10 @@ cluster-configs:
     egov-user-chatbot:
       namespace: egov
       name: egov-user-chatbot
+    
+    hcm-moz-impl:
+      namespace: egov
+      name: hcm-moz-impl
 
     oauth2-proxy:
       namespace: egov
@@ -150,7 +146,11 @@ cluster-configs:
     postgres:
       namespace: jenkins
       name: postgres
-    
-    airflow:
+
+    elastic:
       namespace: egov
-      name: airflow
+      name: elastic
+
+    jupyter:
+      namespace: jupyter
+      name: jupyter

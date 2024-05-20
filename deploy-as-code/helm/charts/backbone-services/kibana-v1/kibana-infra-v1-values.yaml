@@ -1,15 +1,15 @@
 # Common Labels
 labels:
   app: "kibana-infra-v1"
-namespace: es-cluster-infra  
+namespace: logging
 
 # Ingress Configs
 ingress:
   enabled: true
-  context: "kibana-infra"
+  context: "logging"
   additionalAnnotations: |
-    nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
-    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth 
+#    nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
+#    nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
 
 # Init Containers Configs
 initContainers: {}
@@ -26,7 +26,7 @@ healthCheckPath: "logging/app/kibana"
 healthChecks:
   enabled: true
   livenessProbePath: "/logging/"
-  readinessProbePath: "/logging/"            
+  readinessProbePath: "/logging/"
 
 # Additional Container Envs
 env: |
@@ -35,4 +35,4 @@ env: |
   - name: SERVER_BASEPATH
     value: {{ .Values.serverBasePath | quote }}
   - name: SERVER_REWRITEBASEPATH
-    value: "true"   
+    value: "true"

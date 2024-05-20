@@ -11,4 +11,3 @@ spec:
     targetPort: {{ .Values.httpPort }}
   sessionAffinity: None
   type: {{ .Values.type }}
-

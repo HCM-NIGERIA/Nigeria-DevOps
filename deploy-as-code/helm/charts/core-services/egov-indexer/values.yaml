@@ -60,18 +60,20 @@ env: |
     value: "false"  
   - name: MANAGEMENT_SECURITY_ENABLED
     value: "false"
-  - name: STATE_LEVEL_TENANT_ID
+  - name: EGOV_STATELEVEL_TENANTID
     valueFrom:
       configMapKeyRef:
         name: egov-config
-        key: state-level-tenant-id
-  - name: EGOV_EDCR_HOST
+        key: egov-state-level-tenant-id
+  - name: EGOV_INDEXER_ES_USERNAME
     valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: egov-services-fqdn-name
-  - name: EGOV_BPA_HOST
+      secretKeyRef:
+        name: elastic
+        key: username
+  - name: EGOV_INDEXER_ES_PASSWORD
     valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: bpa-services 
+      secretKeyRef:
+        name: elastic
+        key: password
+  - name: EGOV_INFRA_INDEXER_LEGACY_VERSION
+    value: "false"

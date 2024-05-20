@@ -43,7 +43,15 @@ numberPartitions: "3"
 replicationFactor: "2"
 minInsyncReplicas: "1"
 offsetsReplicationFactor: "3"
-
+maxRequestSize: "20000000"
+maxMessageBytes: "20000000"
+maxReplicaFetchMaxBytes: "20000000"
+maxPartitionFetchBytes: "20000000"
+requestTimeoutMs: "600000"
+heartbeatIntervalMs: "1000"
+maxPollIntervalMs: "900000"
+maxPollRecords: "100"
+sessionTimeoutMs: "300000"
 
 ## Persistent Volumes
 ## ref: https://kubernetes.io/docs/concepts/storage/persistent-volumes/

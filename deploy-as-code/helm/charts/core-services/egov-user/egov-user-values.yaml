@@ -27,7 +27,7 @@ healthChecks:
   readinessProbePath: "/user/health"
 appType: "java-spring"
 tracing-enabled: true
-state-level-tenant-id: "pb"
+egov-state-level-tenant-id: "pb"
 decryption-abac-enabled: "false"
 account-unlock-cool-down-period-minutes: "30"
 otp-validation: "true"
@@ -58,10 +58,7 @@ env: |
         name: egov-service-host
         key: egov-otp
   - name: EGOV_USER_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-user
+    value: "http://localhost:8080"
   - name: EGOV_SERVICES_ACCESSCONTROL_HOST
     valueFrom:
       configMapKeyRef:
@@ -87,16 +84,20 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-enc-service
-  - name: EGOV_LOCALIZATION_HOST
+  - name: EGOV_STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
-        key: egov-localization
+        name: egov-config
+        key: egov-state-level-tenant-id
   - name: STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
+  - name: EGOV_USER_MOBILE_PATTERN
+    value: "(^$|[0-9]{9,11})"
+  - name: EGOV_USER_PWD_PATTERN
+    value: "((?=.*\\d)(?=.*[a-z])(?=.*[@#$%])(?=\\S+$).*$)"
   - name: DECRYPTION_ABAC_ENABLED
     value: {{ index .Values "decryption-abac-enabled" | quote }}
   - name: KAFKA_TOPIC_AUDIT

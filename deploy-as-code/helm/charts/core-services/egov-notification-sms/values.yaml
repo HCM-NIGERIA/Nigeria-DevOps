@@ -6,7 +6,6 @@ labels:
 # Init Containers Configs
 initContainers: {}
 
-
 # Container Configs
 image:
   repository: "egov-notification-sms"
