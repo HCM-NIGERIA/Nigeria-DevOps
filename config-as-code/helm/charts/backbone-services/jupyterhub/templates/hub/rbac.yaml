@@ -1,0 +1,40 @@
+{{- if .Values.rbac.enabled -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hub
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "jupyterhub.labels" . | nindent 4 }}
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hub
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "jupyterhub.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]       # "" indicates the core API group
+    resources: ["*"]
+    verbs: ["get", "watch", "list", "create", "delete"]
+  - apiGroups: [""]       # "" indicates the core API group
+    resources: ["*"]
+    verbs: ["get", "watch", "list"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: hub
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "jupyterhub.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: hub
+    namespace: {{ .Values.namespace }}
+roleRef:
+  kind: Role
+  name: hub
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
