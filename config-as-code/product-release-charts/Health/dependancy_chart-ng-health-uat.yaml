@@ -29,15 +29,11 @@ modules:
       - egovio/egov-indexer:master-impel-4e1c6763cf-45
       - egovio/egov-location:master-impel-60bd931a97-6
       - egovio/egov-mdms-service:v1.3.2-72f8a8f87b-12
-      - egovio/egov-notification-mail:health-digit-master-6865af2823-2
-      - egovio/egov-otp:v1.2.2-72f8a8f87b-12
       - egovio/egov-persister:v1.1.5-3371bc2-5
       - egovio/egov-url-shortening:v1.1.2-1715164454-3
       - egovio/egov-user:health-digit-master-c7e4f3147b-7
       - egovio/user-otp:health-digit-master-dca3efde85-7
       - egovio/egov-workflow-v2:v1.2.1-df98ec3c35-2
-      - egovio/report:v1.3.4-96b24b0d72-16
-      - egovio/egov-document-uploader:v1.1.0-75d461a4d2-4
       - egovio/service-request:master-impel-198c6d78f8-11
       - egovio/pgr-services:master-impel-afa361c92a-13
       - egovio/playground:1.0
@@ -53,18 +49,8 @@ modules:
     dependencies:
       - "business"
     services:
-      - egovio/citizen:v1.8.0-b078fa041d-97
       - egovio/employee:v1.8.0-2ac8314b2f-116
       - egovio/digit-ui:master-impl-8fa035ad79-160
-  - name: m_dss   #dss
-    dependencies:
-      - "frontend"
-      - "core"
-      - "business"
-    services:
-      - egovio/dashboard-analytics:master-impel-f705ac483a-48
-      - egovio/dashboard-ingest:v1.1.4-72f8a8f87b-10
-      - egovio/dss-dashboard:v1.8.0-0d70d60e63-53
   - name: m_health
     dependencies:
       - "backbone"

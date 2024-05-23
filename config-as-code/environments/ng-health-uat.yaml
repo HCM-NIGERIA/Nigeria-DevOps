@@ -24,7 +24,7 @@ cluster-configs:
         egov-state-level-tenant-id: "ng"
         s3-assets-bucket: "(pg-health-egov-assets|egov-health-playground-assets)"
         es-host: "elasticsearch-data.es-cluster-v8"
-        es-indexer-host: "http://elasticsearch-data.es-cluster-v8:9200/"
+        es-indexer-host: "https://elasticsearch-data.es-cluster-v8:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-v2.kafka-cluster:9092"
         kafka-infra-brokers: "kafka-v2.kafka-cluster:9092"
@@ -83,7 +83,7 @@ cluster-configs:
         egov-data-uploader: "http://egov-data-uploader:8080/"
         egov-indexer: "http://egov-indexer:8080/"
         egov-hrms: "http://egov-hrms:8080/"
-        es-client: "http://elasticsearch-data.es-cluster-v8:9200"
+        es-client: "https://elasticsearch-data.es-cluster-v8:9200"
         hr-masters: "http://hr-masters:8080/"
         hr-employee: "http://hr-employee:8080/"
         hr-masters-v2: "http://hr-masters-v2:8080/"
@@ -650,9 +650,9 @@ zookeeper-v2:
   persistence:
     enabled: true
     aws:
-      - volumeId: "vol-0c01b488ef6525404" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
       - volumeId: "vol-0ce01d07de38972d7" ## add your respective volume id eg. vol-0085073c65f76dre5
+        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+      - volumeId: "vol-0c01b488ef6525404" ## add your respective volume id eg. vol-0085073c65f76dre5
         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
       - volumeId: "vol-01230348dea64b776" ## add your respective volume id eg. vol-0085073c65f76dre5
         zone: af-south-1b            ## add your respective zone eg. ap-south-1b

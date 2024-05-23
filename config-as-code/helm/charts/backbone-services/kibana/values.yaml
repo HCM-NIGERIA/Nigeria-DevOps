@@ -160,21 +160,13 @@ ingress:
     nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
     nginx.ingress.kubernetes.io/use-regex: "true"
   hosts:
-    - host: moz-health-uat.digit.org
+    - host: ng-health-uat.digit.org
       paths:
         - path: /kibana-upgrade
   tls: 
-   - secretName: moz-health-uat.digit.org-tls-certs
+   - secretName: ng-health-uat.digit.org-tls-certs
      hosts:
-       - moz-health-uat.digit.org
-#  hosts:
-#    - host: salama.digit.org
-#      paths:
-#        - path: /de3c60e0-47a4-46b3-94a5-bb15b8608bfa
-#  tls:
-#   - secretName: salama.digit.org-tls-certs
-#     hosts:
-#       - salama.digit.org
+       - ng-health-uat.digit.org
 
 readinessProbe:
   failureThreshold: 3
