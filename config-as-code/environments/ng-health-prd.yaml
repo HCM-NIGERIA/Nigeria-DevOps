@@ -22,6 +22,7 @@ cluster-configs:
         aws-region: "af-south-1"
         aws-cluster-name: "arn:aws:eks:af-south-1:211125416222:cluster/ng-health-prd"
         egov-state-level-tenant-id: "ng"
+        redis-host: "redis.backbone"
         s3-assets-bucket: "(pg-health-egov-assets|egov-health-playground-assets)"
         es-host: "elasticsearch-data.es-cluster-v8"
         es-indexer-host: "https://elasticsearch-data.es-cluster-v8:9200/"
@@ -296,6 +297,7 @@ egov-mdms-service:
     limits:
       memory: "768Mi"
   replicas: 1
+  branch: "PROD"
   images:
     - egovio/egov-mdms-service
   mdms-path: "/work-dir/health-campaign-mdms/data"

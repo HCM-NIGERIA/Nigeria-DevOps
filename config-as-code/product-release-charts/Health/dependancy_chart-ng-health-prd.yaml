@@ -4,8 +4,8 @@ modules:
     services:
       - zookeeper-v2
       - kafka-v2
-      - kafka-connect
-      - kafka-connect-restart-tasks
+#      - kafka-connect
+#      - kafka-connect-restart-tasks
       - elasticsearch-master
       - elasticsearch-data
       - kibana
