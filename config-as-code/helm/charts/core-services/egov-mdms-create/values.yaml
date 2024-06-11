@@ -59,7 +59,7 @@ env: |
   - name: EGOV_DATA_ROOT_FOLDER
     value: data
   - name: EGOV_REPO_OWNER
-    value: HCM-MOZ-IMPEL
+    value: HCM-NIGERIA
   - name: EGOV_REPO
     value: {{ index .Values "mdms-folder" | quote }}
   - name: EGOV_REPO_BRANCH

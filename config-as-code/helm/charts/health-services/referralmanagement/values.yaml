@@ -122,18 +122,18 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: household-referral
+        key: household
   - name: EGOV_SEARCH_HOUSEHOLD_URL
-    value: "/household-referral/v1/_search"
+    value: "/household/v1/_search"
   - name: EGOV_SEARCH_HOUSEHOLD_MEMBER_URL
-    value: "/household-referral/member/v1/_search"
+    value: "/household/member/v1/_search"
   - name: EGOV_INDIVIDUAL_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: individual-referral
+        key: individual
   - name: EGOV_SEARCH_INDIVIDUAL_URL
-    value: "/individual-referral/v1/_search"
+    value: "/individual/v1/_search"
   - name: EGOV_PRODUCT_HOST
     valueFrom:
       configMapKeyRef:
@@ -145,17 +145,17 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: project-referral
+        key: project
   - name: EGOV_SEARCH_PROJECT_TASK_URL
-    value: "/project-referral/task/v1/_search"
+    value: "/project/task/v1/_search"
   - name: EGOV_SEARCH_PROJECT_BENEFICIARY_URL
     value: "/project/beneficiary/v1/_search"
   - name: EGOV_SEARCH_PROJECT_URL
-    value: "/project-referral/v1/_search"
+    value: "/project/v1/_search"
   - name: EGOV_SEARCH_PROJECT_STAFF_URL
-    value: "/project-referral/staff/v1/_search"
+    value: "/project/staff/v1/_search"
   - name: EGOV_SEARCH_PROJECT_FACILITY_URL
-    value: "/project-referral/facility/v1/_search"
+    value: "/project/facility/v1/_search"
   - name: REFERRALMANAGEMENT.SIDEEFFECT.KAFKA.CREATE.TOPIC
     value: "save-side-effect-topic"
   - name: REFERRALMANAGEMENT.SIDEEFFECT.KAFKA.UPDATE.TOPIC
