@@ -2,3 +2,5 @@
 creation_rules:
   - path: environments/ng-health-uat-secrets.yaml
     kms: 'arn:aws:kms:af-south-1:211125416222:key/6cab1550-fdd4-4741-ad2a-f09bbe49bc08'
+  - path: environments/ng-health-prd-secrets.yaml
+    kms: 'arn:aws:kms:af-south-1:211125416222:key/6cab1550-fdd4-4741-ad2a-f09bbe49bc08'
