@@ -4,7 +4,7 @@ provider "google" {
 }
 
 module "kubernetes" {
-  source = "../modules-old/kubernetes/gke"
+  source = "../modules/kubernetes/gke"
   project_id = "${var.project_id}"
   region = "${var.region}"
   gke_username = "${var.gke_username}"
@@ -17,7 +17,7 @@ module "kubernetes" {
 }
 
 module "zookeeper" {
-  source = "../modules-old/storage/gke"
+  source = "../modules/storage/gke"
   environment = "${var.env_name}"
   itemCount = "3"
   disk_prefix = "zookeeper"
@@ -28,7 +28,7 @@ module "zookeeper" {
 }
 
 module "kafka" {
-  source = "../modules-old/storage/gke"
+  source = "../modules/storage/gke"
   environment = "${var.env_name}"
   itemCount = "3"
   disk_prefix = "kafka"
@@ -38,7 +38,7 @@ module "kafka" {
   
 }
 module "es-master" {
-  source = "../modules-old/storage/gke"
+  source = "../modules/storage/gke"
   environment = "${var.env_name}"
   itemCount = "3"
   disk_prefix = "es-master"
@@ -48,7 +48,7 @@ module "es-master" {
   
 }
 module "es-data-v1" {
-  source = "../modules-old/storage/gke"
+  source = "../modules/storage/gke"
   environment = "${var.env_name}"
   itemCount = "2"
   disk_prefix = "es-data-v1"
@@ -59,7 +59,7 @@ module "es-data-v1" {
 }
 
 module "postgres-db" {
-  source = "../modules-old/db/gke"
+  source = "../modules/db/gke"
   env_name = "${var.env_name}"
   region = "${var.region}"
   db_version = "POSTGRES_11"

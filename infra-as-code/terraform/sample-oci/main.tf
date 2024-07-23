@@ -4,7 +4,7 @@ data "oci_identity_availability_domains" "ADs" {
 }
 
 module "network" {
-  source             = "../modules-old/kubernetes/oci/network"
+  source             = "../modules/kubernetes/oci/network"
   vcn_cidr           = var.vcn_cidr
   tenancy_id         = var.tenancy_id
   ClusterName        = var.ClusterName
@@ -12,7 +12,7 @@ module "network" {
 }
 
 module "oke" {
-  source              = "../modules-old/kubernetes/oci/oke-cluster"
+  source              = "../modules/kubernetes/oci/oke-cluster"
   tenancy_id          = var.tenancy_id
   kubernetes_version  = var.kubernetes_version
   ClusterName         = var.ClusterName
@@ -26,7 +26,7 @@ module "oke" {
 }
 
 module "es-master" {
-  source = "../modules-old/storage/oci"
+  source = "../modules/storage/oci"
   instance_count = 3
   compartment_id = var.compartment_id
   vol_name = "es-master"
@@ -34,7 +34,7 @@ module "es-master" {
   ad = "ZxhC:AP-MUMBAI-1-AD-1"  
 }
 module "es-data-v1" {
-  source = "../modules-old/storage/oci"
+  source = "../modules/storage/oci"
   instance_count = 3
   compartment_id = var.compartment_id
   vol_name = "es-data-v1"
@@ -43,7 +43,7 @@ module "es-data-v1" {
 }
 
 module "zookeeper" {
-  source = "../modules-old/storage/oci"
+  source = "../modules/storage/oci"
   instance_count = 3
   compartment_id = var.compartment_id
   vol_name = "zookeeper"
@@ -52,7 +52,7 @@ module "zookeeper" {
 }
 
 module "kafka" {
-  source = "../modules-old/storage/oci"
+  source = "../modules/storage/oci"
   instance_count = 3
   compartment_id = var.compartment_id
   vol_name = "kafka"

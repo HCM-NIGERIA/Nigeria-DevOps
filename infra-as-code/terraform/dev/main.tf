@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "resource_group" {
 }
 
 module "kubernetes" {
-  source = "../modules-old/kubernetes/azure"
+  source = "../modules/kubernetes/azure"
   environment = "${var.environment}"
   name = "egov-micro-dev"
   location = "${azurerm_resource_group.resource_group.location}"
@@ -27,7 +27,7 @@ module "kubernetes" {
 }
 
 module "zookeeper" {
-  source = "../modules-old/storage/azure"
+  source = "../modules/storage/azure"
   environment = "${var.environment}"
   itemCount = "3"
   disk_prefix = "zookeeper"
@@ -39,7 +39,7 @@ module "zookeeper" {
 }
 
 module "kafka" {
-  source = "../modules-old/storage/azure"
+  source = "../modules/storage/azure"
   environment = "${var.environment}"
   itemCount = "3"
   disk_prefix = "kafka"
@@ -50,7 +50,7 @@ module "kafka" {
   
 }
 module "es-master" {
-  source = "../modules-old/storage/azure"
+  source = "../modules/storage/azure"
   environment = "${var.environment}"
   itemCount = "3"
   disk_prefix = "es-master"
@@ -61,7 +61,7 @@ module "es-master" {
   
 }
 module "es-data-v1" {
-  source = "../modules-old/storage/azure"
+  source = "../modules/storage/azure"
   environment = "${var.environment}"
   itemCount = "2"
   disk_prefix = "es-data-v1"
@@ -73,7 +73,7 @@ module "es-data-v1" {
 }
 
 module "postgres-db" {
-  source = "../modules-old/db/azure"
+  source = "../modules/db/azure"
   server_name = "egov-micro-dev"
   resource_group = "${module.kubernetes.node_resource_group}"  
   sku_cores = "2"
