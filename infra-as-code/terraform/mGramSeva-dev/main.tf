@@ -7,7 +7,7 @@ terraform {
 }
 
 module "network" {
-  source             = "../modules/kubernetes/aws/network"
+  source             = "../modules-old/kubernetes/aws/network"
   vpc_cidr_block     = "${var.vpc_cidr_block}"
   cluster_name       = "${var.cluster_name}"
   availability_zones = "${var.network_availability_zones}"
@@ -114,7 +114,7 @@ module "eks" {
 
 module "es-master" {
 
-  source = "../modules/storage/aws"
+  source = "../modules-old/storage/aws"
   storage_count = 3
   environment = "${var.cluster_name}"
   disk_prefix = "es-master"
@@ -125,7 +125,7 @@ module "es-master" {
 }
 module "es-data-v1" {
 
-  source = "../modules/storage/aws"
+  source = "../modules-old/storage/aws"
   storage_count = 3
   environment = "${var.cluster_name}"
   disk_prefix = "es-data-v1"
@@ -137,7 +137,7 @@ module "es-data-v1" {
 
 module "zookeeper" {
 
-  source = "../modules/storage/aws"
+  source = "../modules-old/storage/aws"
   storage_count = 3
   environment = "${var.cluster_name}"
   disk_prefix = "zookeeper"
@@ -149,7 +149,7 @@ module "zookeeper" {
 
 module "kafka" {
 
-  source = "../modules/storage/aws"
+  source = "../modules-old/storage/aws"
   storage_count = 3
   environment = "${var.cluster_name}"
   disk_prefix = "kafka"

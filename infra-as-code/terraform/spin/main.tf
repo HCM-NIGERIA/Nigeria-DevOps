@@ -7,7 +7,7 @@ terraform {
 }
 
 module "network" {
-  source             = "../modules/kubernetes/aws/network"
+  source             = "../modules-old/kubernetes/aws/network"
   vpc_cidr_block     = "${var.vpc_cidr_block}"
   cluster_name       = "${var.cluster_name}"
   availability_zones = "${var.network_availability_zones}"
@@ -115,7 +115,7 @@ module "eks" {
 
 module "spinnaker" {
 
-  source = "../modules/storage/aws"
+  source = "../modules-old/storage/aws"
   storage_count = 1
   environment = "${var.cluster_name}"
   disk_prefix = "spinnaker-home"

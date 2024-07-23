@@ -5,7 +5,7 @@
 
 variable "cluster_name" {
   description = "Name of the Kubernetes cluster"
-  default = "ng-health-prd" #REPLACE
+  default = "ng-health-uat" #REPLACE
 }
 
 variable "vpc_cidr_block" {
@@ -53,12 +53,12 @@ variable "ssh_key_name" {
 
 variable "db_name" {
   description = "RDS DB name. Make sure there are no hyphens or other special characters in the DB name. Else, DB creation will fail"
-  default = "nghealthprd" #REPLACE
+  default = "nghealthuat" #REPLACE
 }
 
 variable "db_username" {
   description = "RDS database user name"
-  default = "nghealthprd" #REPLACE
+  default = "nghealthuat" #REPLACE
 }
 
 #DO NOT fill in here. This will be asked at runtime

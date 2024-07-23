@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "digit-nghealthprd-terraform"
+    bucket = "digit-nghealthuat-terraform"
     key    = "digit-bootcamp-setup/terraform.tfstate"
     region = "af-south-1"
     # The below line is optional depending on whether you are using DynamoDB for state locking and consistency
@@ -23,10 +23,10 @@ module "db" {
   subnet_ids                    = "${module.network.private_subnets}"
   vpc_security_group_ids        = ["${module.network.rds_db_sg_id}"]
   availability_zone             = "${element(var.availability_zones, 0)}"
-  instance_class                = "db.m5.large"  ## postgres db instance type
+  instance_class                = "db.t3.medium"  ## postgres db instance type
   engine_version                = "12.17"   ## postgres version
   storage_type                  = "gp2"
-  storage_gb                    = "30"     ## postgres disk size
+  storage_gb                    = "10"     ## postgres disk size
   backup_retention_days         = "7"
   administrator_login           = "${var.db_username}"
   administrator_login_password  = "${var.db_password}"
@@ -69,7 +69,7 @@ module "eks" {
   worker_groups = [
     {
       name                          = "spot"
-      ami_id                        = "ami-0dfc550c753a922fc"
+      ami_id                        = "ami-0885874ee46a0d461"
       subnets                       = "${concat(slice(module.network.private_subnets, 0, length(var.availability_zones)))}"
       instance_type                 = "${var.instance_type}"
       override_instance_types       = "${var.override_instance_types}"
@@ -133,11 +133,14 @@ resource "aws_iam_role_policy_attachment" "cluster_AmazonEC2FullAccess" {
   role       = "${aws_iam_role.eks_iam.name}"
 }
 
-resource "aws_iam_openid_connect_provider" "eks_oidc_provider" {
-  client_id_list = ["sts.amazonaws.com"]
-  thumbprint_list = ["${data.tls_certificate.thumb.certificates.0.sha1_fingerprint}"] # This should be empty or provide certificate thumbprints if needed
-  url            = "${data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer}" # Replace with the OIDC URL from your EKS cluster details
-}
+
+#        commenting below while eks upgrade
+
+#resource "aws_iam_openid_connect_provider" "eks_oidc_provider" {
+#  client_id_list = ["sts.amazonaws.com"]
+#  thumbprint_list = ["${data.tls_certificate.thumb.certificates.0.sha1_fingerprint}"] # This should be empty or provide certificate thumbprints if needed
+#  url            = "${data.aws_eks_cluster.cluster.identity[0].oidc[0].issuer}" # Replace with the OIDC URL from your EKS cluster details
+#}
 
 resource "aws_security_group_rule" "rds_db_ingress_workers" {
   description              = "Allow worker nodes to communicate with RDS database" 
@@ -173,7 +176,7 @@ module "zookeeper" {
   disk_prefix = "zookeeper"
   availability_zones = "${var.availability_zones}"
   storage_sku = "gp2"
-  disk_size_gb = "10"
+  disk_size_gb = "2"
   
 }
 
@@ -185,13 +188,13 @@ module "kafka" {
   disk_prefix = "kafka"
   availability_zones = "${var.availability_zones}"
   storage_sku = "gp2"
-  disk_size_gb = "100"
+  disk_size_gb = "50"
   
 }
 
 
 
-module "esv8-master" {
+module "es-master" {
 
 source = "../modules/storage/aws"
 storage_count = 3
@@ -199,10 +202,10 @@ environment = "${var.cluster_name}"
 disk_prefix = "esv8-master"
 availability_zones = "${var.availability_zones}"
 storage_sku = "gp2"
-disk_size_gb = "10"
+disk_size_gb = "2"
 
 }
-module "esv8-data" {
+module "es-data" {
 
 source = "../modules/storage/aws"
 storage_count = 3
@@ -210,7 +213,7 @@ environment = "${var.cluster_name}"
 disk_prefix = "esv8-data"
 availability_zones = "${var.availability_zones}"
 storage_sku = "gp2"
-disk_size_gb = "100"
+disk_size_gb = "10"
 
 }
 
