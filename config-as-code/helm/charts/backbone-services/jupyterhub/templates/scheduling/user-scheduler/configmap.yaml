@@ -2,24 +2,45 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: user-scheduler
+  name: {{ include "jupyterhub.user-scheduler-deploy.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "jupyterhub.labels" . | nindent 4 }}
 data:
-  # ref: https://kubernetes.io/docs/reference/scheduling/config/
+  {{- /*
+    This is configuration of a k8s official kube-scheduler binary running in the
+    user-scheduler.
+
+    The config version and kube-scheduler binary version has a fallback for k8s
+    clusters versioned v1.23 or lower because:
+
+    - v1 / v1beta3 config requires kube-scheduler binary >=1.25 / >=1.23
+    - kube-scheduler binary >=1.25 requires storage.k8s.io/v1/CSIStorageCapacity
+      available first in k8s >=1.24
+
+    ref: https://kubernetes.io/docs/reference/scheduling/config/
+    ref: https://kubernetes.io/docs/reference/config-api/kube-scheduler-config.v1/
+    ref: https://kubernetes.io/docs/reference/config-api/kube-scheduler-config.v1beta3/
+  */}}
   config.yaml: |
-    apiVersion: kubescheduler.config.k8s.io/v1beta1
+    {{- if semverCompare ">=1.24.0-0" .Capabilities.KubeVersion.Version }}
+    apiVersion: kubescheduler.config.k8s.io/v1
+    {{- else }}
+    apiVersion: kubescheduler.config.k8s.io/v1beta3
+    {{- end }}
     kind: KubeSchedulerConfiguration
     leaderElection:
-      resourceLock: endpoints
-      resourceName: user-scheduler-lock
-      resourceNamespace: {{ .Values.namespace }}
+      resourceLock: endpointsleases
+      resourceName: {{ include "jupyterhub.user-scheduler-lock.fullname" . }}
+      resourceNamespace: "{{ .Release.Namespace }}"
     profiles:
-      - schedulerName: {{ .Release.Name }}-user-scheduler
+      - schedulerName: {{ include "jupyterhub.user-scheduler.fullname" . }}
+        {{- with .Values.scheduling.userScheduler.plugins }}
         plugins:
-          {{- .Values.scheduling.userScheduler.plugins | toYaml | trimSuffix "\n" | nindent 10 }}
-
-  {{- $defaultPolicy := .Files.Get "files/userscheduler-defaultpolicy.yaml" | fromYaml }}
-  policy.cfg: {{ .Values.scheduling.userScheduler.policy | default $defaultPolicy | toJson | quote }}
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
+        {{- with .Values.scheduling.userScheduler.pluginConfig }}
+        pluginConfig:
+          {{- . | toYaml | nindent 10 }}
+        {{- end }}
 {{- end }}
