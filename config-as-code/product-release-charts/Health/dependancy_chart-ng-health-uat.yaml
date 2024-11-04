@@ -68,3 +68,4 @@ modules:
       - egovio/hcm-moz-impl:develop-nigeria-7c4731f-378
       - egovio/egov-mdms-create:develop-3a53c3b-3
       - egovio/referralmanagement:referral-changes-5133a15b0f-114
+      - egovio/attendance:master-impel-ea8682f3-55
