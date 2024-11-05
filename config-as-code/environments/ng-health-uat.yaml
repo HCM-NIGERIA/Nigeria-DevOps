@@ -1,5 +1,5 @@
 global:
-  domain: ng-health-uat.digit.org
+  domain: uat.hcm-kano.org
   setup: fullsetup
 
 cluster-configs:
@@ -16,7 +16,7 @@ cluster-configs:
         db-host: "ng-health-uat-db.cp2402gi2u8g.af-south-1.rds.amazonaws.com" ## Add db-host name eg: egov-demo.database.azure.com
         db-name: "nghealthuat" ## Add db-name
         db-url: "jdbc:postgresql://ng-health-uat-db.cp2402gi2u8g.af-south-1.rds.amazonaws.com:5432/nghealthuat" ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-        domain: "ng-health-uat.digit.org" ## Add your Domain Name
+        domain: "uat.hcm-kano.org" ## Add your Domain Name
         egov-services-fqdn-name: "https://ng-health-uat.digit.org/" ## Add your Domain Name
         redis-host: "redis.backbone"
         aws-cluster-ip: "https://C567914CF7DE20DC56A4912B9D8C876C.sk1.af-south-1.eks.amazonaws.com"

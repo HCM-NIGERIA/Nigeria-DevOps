@@ -44,7 +44,7 @@ modules:
       - "core"
     services:
       - egovio/egf-master:v1.1.3-72f8a8f87b-15
-      - egovio/egov-hrms:health-lib-dev-37860d29e6-73
+      - egovio/egov-hrms:health-kebbi-dev-9379a6e6b3-86
   - name: "frontend"
     dependencies:
       - "business"
