@@ -216,6 +216,21 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-user
+  - name: EGOV_ATTENDANCE_HOST
+    valueFrom:
+      configMapKeyRef:  
+        name: egov-service-host  
+        key: attendance-service  
+  - name: TRANSFORMER_CONSUMER_SAVE_ATTENDANCE_LOG_TOPIC
+    value: save-attendance-log
+  - name: TRANSFORMER_CONSUMER_UPDATE_ATTENDANCE_LOG_TOPIC
+    value: update-attendance-log
+  - name: TRANSFORMER_PRODUCER_ATTENDANCE_LOG_INDEX_V1_TOPIC
+    value: transformer-save-attendance-log
+  - name: TRANSFORMER_PRODUCER_ATTENDANCE_REGISTER_INDEX_V1_TOPIC
+    value: transformer-save-attendance-register
+  - name: EGOV_SEARCH_ATTENDANCE_REGISTER_URL
+    value: /attendance/v1/_search
   - name: EGOV_SEARCH_USER_URL
     value: /user/_search
   - name: PROJECT_STAFF_ROLE_MDMS_MODULE
