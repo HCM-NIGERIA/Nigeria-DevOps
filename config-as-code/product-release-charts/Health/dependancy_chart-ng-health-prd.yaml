@@ -50,7 +50,7 @@ modules:
       - "business"
     services:
       - egovio/employee:v1.8.0-2ac8314b2f-116
-      - egovio/digit-ui:master-impl-8fa035ad79-160
+      - egovio/digit-ui:master-impel-nigeria-d39a0a62c7-176
   - name: m_health
     dependencies:
       - "backbone"
@@ -65,6 +65,6 @@ modules:
       - egovio/stock:master-impel-9ebd806fe1-71
       - egovio/household:master-impel-fc710d7583-110
       - egovio/project:master-impel-82abd11612-195
-      - egovio/hcm-moz-impl:develop-nigeria-7c4731f-378
+      - egovio/hcm-moz-impl:develop-schisto-4e9894e5-401
       - egovio/egov-mdms-create:develop-3a53c3b-3
       - egovio/referralmanagement:referral-changes-5133a15b0f-114
