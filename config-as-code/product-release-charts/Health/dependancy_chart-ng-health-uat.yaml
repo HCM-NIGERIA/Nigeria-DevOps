@@ -61,7 +61,8 @@ modules:
       - egovio/facility:master-impel-82abd11612-46
       - egovio/product:master-impel-9e32e9c097-22
       - egovio/individual:master-impel-a6b7c7203c-213
-      - egovio/transformer:individual-additionaldetails-in-task-51ce1e23d4-212
+#      - egovio/transformer:individual-additionaldetails-in-task-51ce1e23d4-212
+      - egovio/transformer:schisto-individual-info-4e8392ce31-299
       - egovio/stock:master-impel-9ebd806fe1-71
       - egovio/household:master-impel-fc710d7583-110
       - egovio/project:master-impel-82abd11612-195
