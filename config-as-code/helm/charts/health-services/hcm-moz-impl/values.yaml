@@ -72,6 +72,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: EGOV_ATTENDANCE_HOST
+    valueFrom:
+      configMapKeyRef:  
+        name: egov-service-host  
+        key: attendance-service
   - name: EGOV_IDGEN_PATH
     value: "egov-idgen/id/_generate"
   - name: EGOV_IDGEN_INTEGRATION_ENABLED

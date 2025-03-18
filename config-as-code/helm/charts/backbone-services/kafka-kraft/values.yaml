@@ -111,7 +111,8 @@ config: ""
 existingConfigmap: ""
 ## @param extraConfig Additional configuration to be appended at the end of the generated Kafka configuration file.
 ##
-extraConfig: ""
+extraConfig: |
+  num.partitions=20
 ## @param secretConfig Additional configuration to be appended at the end of the generated Kafka configuration file.
 ## This value will be stored in a secret.
 ##
@@ -768,7 +769,7 @@ controller:
       - ReadWriteOnce
     ## @param controller.persistence.size PVC Storage Request for Kafka data volume
     ##
-    size: 30Gi
+    size: 100Gi
     ## @param controller.persistence.annotations Annotations for the PVC
     ##
     annotations: {}
@@ -808,7 +809,7 @@ controller:
       - ReadWriteOnce
     ## @param controller.logPersistence.size PVC Storage Request for Kafka logs volume
     ##
-    size: 30Gi
+    size: 100Gi
     ## @param controller.logPersistence.annotations Annotations for the PVC
     ##
     annotations: {}
@@ -1147,7 +1148,7 @@ broker:
       - ReadWriteOnce
     ## @param broker.persistence.size PVC Storage Request for Kafka data volume
     ##
-    size: 30Gi
+    size: 100Gi
     ## @param broker.persistence.annotations Annotations for the PVC
     ##
     annotations: {}
@@ -1187,7 +1188,7 @@ broker:
       - ReadWriteOnce
     ## @param broker.logPersistence.size PVC Storage Request for Kafka logs volume
     ##
-    size: 8Gi
+    size: 100Gi
     ## @param broker.logPersistence.annotations Annotations for the PVC
     ##
     annotations: {}
@@ -2370,7 +2371,7 @@ zookeeper:
     storageClass: ""
     accessModes:
       - ReadWriteOnce
-    size: 8Gi
+    size: 10Gi
 
 ## External Zookeeper Configuration
 ##
