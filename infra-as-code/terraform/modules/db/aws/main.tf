@@ -26,6 +26,7 @@ resource "aws_db_instance" "rds_postgres" {
   db_subnet_group_name    = "${aws_db_subnet_group.db_subnet_group.name}"
   copy_tags_to_snapshot   = "true"
   skip_final_snapshot     = "true"
+  auto_minor_version_upgrade = "false"
 
     tags = "${
     tomap({
