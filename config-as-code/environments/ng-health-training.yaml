@@ -632,17 +632,17 @@ fluent-bit:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # kafka-v2 AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-kafka-v2:
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0313c77a3ab3cd752" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-02bebe4ea54288db6" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-0546eda0a14019499" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-  zookeeperHosts: "zookeeper-v2.zookeeper-cluster:2181/kafka-v2"
+# kafka-v2:
+#   persistence:
+#     enabled: true
+#     aws:
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  # zookeeperHosts: "zookeeper-v2.zookeeper-cluster:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
   memory_limits: 1408Mi
@@ -662,16 +662,16 @@ kafka-v2:
   sessionTimeoutMs: "300000"
 
 # zookeeper-v2 AWS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-zookeeper-v2:
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0ce01d07de38972d7" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-0c01b488ef6525404" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-01230348dea64b776" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+# zookeeper-v2:
+#   persistence:
+#     enabled: true
+#     aws:
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+#       - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+#         zone: af-south-1b            ## add your respective zone eg. ap-south-1b
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -687,15 +687,15 @@ elasticsearch-data:
   namespace: es-cluster-v8
   image:
     tag: 8.11.1
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0cf8f94e77b1580a6" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-09e23ae9badecb4f0	" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-0bb02318df028fd5b" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  # persistence:
+  #   enabled: true
+  #   aws:
+  #     - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  #     - volumeId: "	" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  #     - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
 
   esJavaOpts: "-Xmx1g -Xms1g"
   resources:
@@ -709,15 +709,15 @@ elasticsearch-master:
   replicas: 3
   image:
     tag: 8.11.1
-  persistence:
-    enabled: true
-    aws:
-      - volumeId: "vol-0bac42fda0bf1d08f" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-0f7c2ebfddb1ce299" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
-      - volumeId: "vol-0225122157305ac65" ## add your respective volume id eg. vol-0085073c65f76dre5
-        zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  # persistence:
+  #   enabled: true
+  #   aws:
+  #     - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  #     - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
+  #     - volumeId: "" ## add your respective volume id eg. vol-0085073c65f76dre5
+  #       zone: af-south-1b            ## add your respective zone eg. ap-south-1b
 
   esJavaOpts: "-Xmx448m -Xms448m"
   resources:
