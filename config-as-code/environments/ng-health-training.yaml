@@ -305,11 +305,11 @@ audit-service:
 egov-mdms-service:
   heap: "-Xmx768m -Xms768m"
   memory_limits: "768Mi"
-  resources:
-    requests:
-      memory: "768Mi"
-    limits:
-      memory: "768Mi"
+  # resources:
+  #   requests:
+  #     memory: "768Mi"
+  #   limits:
+  #     memory: "768Mi"
   replicas: 1
   images:
     - egovio/egov-mdms-service
@@ -755,28 +755,28 @@ project:
   replicas: 1
   heap: "-Xmx2g -Xms2g"
   memory_limits: "2Gi"
-  resources:
-    requests:
-      memory: "2Gi"
-    limits:
-      memory: "2Gi"
+  # resources:
+  #   requests:
+  #     memory: "2Gi"
+  #   limits:
+  #     memory: "2Gi"
 transformer:
   replicas: 1
   heap: "-Xmx756m -Xms756m"
   memory_limits: "1Gi"
-  resources:
-    requests:
-      memory: "1Gi"
-    limits:
-      memory: "1Gi"
+  # resources:
+  #   requests:
+  #     memory: "1Gi"
+  #   limits:
+  #     memory: "1Gi"
 hcm-moz-impl:
   replicas: 1
   heap: "-Xmx1024m -Xms1024m"
   memory_limits: "2Gi"
   startDate: "15/05/2024"
   endDate: "05/06/2024"
-  resources:
-    requests:
-      memory: "2Gi"
-    limits:
-      memory: "2Gi"
+  # resources:
+  #   requests:
+  #     memory: "2Gi"
+  #   limits:
+  #     memory: "2Gi"

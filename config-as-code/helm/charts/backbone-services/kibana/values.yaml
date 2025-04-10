@@ -160,13 +160,13 @@ ingress:
     nginx.ingress.kubernetes.io/lua-resty-waf-score-threshold: "10"
     nginx.ingress.kubernetes.io/use-regex: "true"
   hosts:
-    - host: ng-health-uat.digit.org
+    - host: training.hcm-kano.org
       paths:
         - path: /kibana-upgrade
   tls: 
-   - secretName: ng-health-uat.digit.org-tls-certs
+   - secretName: training.hcm-kano.org-tls-certs
      hosts:
-       - ng-health-uat.digit.org
+       - training.hcm-kano.org
 
 readinessProbe:
   failureThreshold: 3
