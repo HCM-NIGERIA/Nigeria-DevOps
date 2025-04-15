@@ -86,6 +86,18 @@ env: |
         key: individual
   - name: EGOV_INDIVIDUAL_SEARCH_URL
     value: "/individual/v1/_search"
+  - name: EGOV_BOUNDARY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_BOUNDARY_SEARCH_URL
+    value: "/boundary-service/boundary/_search"
+  - name: EGOV_BOUNDARY_HIERARCHY_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
   - name: HOUSEHOLD_MEMBER_KAFKA_CREATE_TOPIC
     value: "save-household-member-topic"
   - name: HOUSEHOLD_MEMBER_KAFKA_UPDATE_TOPIC
@@ -116,5 +128,3 @@ env: |
     value: "update-household-topic"
   - name: HOUSEHOLD.KAFKA.DELETE.TOPIC
     value: "delete-household-topic"
-  - name: EGOV_PERSISTER_BULK_PROCESSING_ENABLED
-    value: "false"

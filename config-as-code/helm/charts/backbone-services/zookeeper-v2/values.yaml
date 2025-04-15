@@ -87,7 +87,7 @@ persistence:
   ## production servers this number should likely be much larger.
   ##
   ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
-  dataDirSize: 5Gi
+  dataDirSize: 10Gi
   # dataDirStorageClass: ""
 
 

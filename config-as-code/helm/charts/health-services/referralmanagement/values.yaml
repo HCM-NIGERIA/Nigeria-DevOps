@@ -7,7 +7,7 @@ labels:
 ingress:
   enabled: true
   zuul: true
-  context: "referralmanagement"
+  context: "referralmanagement" 
 
 # Init Containers Configs
 initContainers:
@@ -101,6 +101,18 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-location
+  - name: EGOV_BOUNDARY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_BOUNDARY_SEARCH_URL
+    value: "/boundary-service/boundary/_search"
+  - name: EGOV_BOUNDARY_HIERARCHY_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
   - name: EGOV_LOCATION_CONTEXT_PATH
     value: "/egov-location/location/v11"
   - name: EGOV_LOCATION_ENDPOINT
@@ -109,9 +121,13 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: "/egov-mdms-service/v1/_search"
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: EGOV_MDMS_INTEGRATION_ENABLED
     value: "true"
   - name: EGOV_MDMS_MASTER_NAME
@@ -150,12 +166,10 @@ env: |
     value: "/project/task/v1/_search"
   - name: EGOV_SEARCH_PROJECT_BENEFICIARY_URL
     value: "/project/beneficiary/v1/_search"
-  - name: EGOV_SEARCH_PROJECT_URL
-    value: "/project/v1/_search"
   - name: EGOV_SEARCH_PROJECT_STAFF_URL
     value: "/project/staff/v1/_search"
-  - name: EGOV_SEARCH_PROJECT_FACILITY_URL
-    value: "/project/facility/v1/_search"
+  - name: EGOV_SEARCH_PROJECT_URL
+    value: "/project/v1/_search"
   - name: REFERRALMANAGEMENT.SIDEEFFECT.KAFKA.CREATE.TOPIC
     value: "save-side-effect-topic"
   - name: REFERRALMANAGEMENT.SIDEEFFECT.KAFKA.UPDATE.TOPIC
@@ -180,18 +194,6 @@ env: |
     value: "update-referral-bulk-topic"
   - name: REFERRALMANAGEMENT.REFERRAL.CONSUMER.BULK.DELETE.TOPIC
     value: "delete-referral-bulk-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.KAFKA.CREATE.TOPIC
-    value: "save-hfreferral-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.KAFKA.UPDATE.TOPIC
-    value: "update-hfreferral-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.KAFKA.DELETE.TOPIC
-    value: "delete-hfreferral-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.CONSUMER.BULK.CREATE.TOPIC
-    value: "save-hfreferral-bulk-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.CONSUMER.BULK.UPDATE.TOPIC
-    value: "update-hfreferral-bulk-topic"
-  - name: REFERRALMANAGEMENT.HFREFERRAL.CONSUMER.BULK.DELETE.TOPIC
-    value: "delete-hfreferral-bulk-topic"
   - name: SEARCH_API_LIMIT
     value: "1000"
   - name: REFERRALMANAGEMENT.DOCUMENT.ID.VERIFICATION.REQUIRED
@@ -213,9 +215,13 @@ env: |
         key: facility
   - name: EGOV_SEARCH_FACILITY_URL
     value: "/facility/v1/_search"
+  - name: EGOV_SEARCH_PROJECT_FACILITY_URL
+    value: "/project/facility/v1/_search"
   - name: PROJECT_MDMS_MODULE
     value: "HCM-PROJECT-TYPES"
   - name: EGOV_LOCATION_HIERARCHY_TYPE
-    value: "ADMIN"
+    value: "IRS"
   - name: EGOV_LOCATION_CODE_QUERY_PARAM
-    value: "codes"
+    value: "code"
+  - name: EGOV_ENABLE_MATVIEW_SEARCH
+    value: "true"

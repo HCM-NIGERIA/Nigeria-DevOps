@@ -107,7 +107,7 @@ volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
   resources:
     requests:
-      storage: 2Gi
+      storage: 10Gi
 
 rbac:
   create: false
@@ -133,7 +133,7 @@ podSecurityPolicy:
 
 persistence:
   enabled: true
-  dataDirSize: "2Gi"
+  dataDirSize: "10Gi"
   annotations: {}
 
 extraVolumes: []

@@ -12,7 +12,7 @@ ingress:
 # Init Containers Configs
 initContainers:
   dbMigration:
-    enabled: true
+    enabled: false
     schemaTable: "pdf_service_schema"
     image:
       repository: "pdf-service-db"
@@ -27,8 +27,10 @@ image:
 replicas: "1"
 appType: "java-spring"
 tracing-enabled: true
-data-config-urls: "file:///work-dir/configs/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/data-config/pt-receipt.json,file:///work-dir/configs/pdf-service/data-config/tl-receipt.json,file:///work-dir/configs/pdf-service/data-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/data-config/tlapplication.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/data-config/tlcertificate.json"
-format-config-urls: "file:///work-dir/configs/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/format-config/pt-receipt.json,file:///work-dir/configs/pdf-service/format-config/tl-receipt.json,file:///work-dir/configs/pdf-service/format-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/format-config/tlapplication.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/format-config/tlcertificate.json"
+data-config-urls: "file:///work-dir/health-campaign-config/pdf-service/data-config/health-bill-payment.json"
+format-config-urls: "file:///work-dir/health-campaign-config/pdf-service/format-config/health-bill-payment.json"
+memory_limits: "256Mi"
+cpu_limits: "100m"
 
 # Additional Container Envs
 env: |
@@ -85,10 +87,7 @@ env: |
         name: egov-service-host
         key: egov-localization
   - name: EGOV_FILESTORE_SERVICE_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-filestore
+    value: "http://egov-filestore:8080"
   - name: EGOV_HOST
     valueFrom:
       configMapKeyRef:

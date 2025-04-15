@@ -75,7 +75,7 @@ hub:
       selector: {}
       accessModes:
         - ReadWriteOnce
-      storage: 1Gi
+      storage: 25Gi
       subPath:
       storageClassName:
     url:
@@ -396,7 +396,7 @@ singleuser:
     static:
       pvcName:
       subPath: "{username}"
-    capacity: 10Gi
+    capacity: 25Gi
     homeMountPath: /home/jovyan
     dynamic:
       storageClass:
@@ -414,7 +414,7 @@ singleuser:
     guarantee:
   memory:
     limit:
-    guarantee: 1G
+    guarantee: 3G
   extraResource:
     limits: {}
     guarantees: {}

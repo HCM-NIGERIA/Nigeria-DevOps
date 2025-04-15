@@ -41,6 +41,7 @@ cluster-configs:
         timezone: "UTC"
         tracer-errors-provideexceptionindetails: "true"
         egov-env: "UAT"
+        boundary-hierarchy: "ADMIN"
 
     egov-service-host:
       namespace: [egov, monitoring]
@@ -75,6 +76,7 @@ cluster-configs:
         egov-otp: "http://egov-otp:8080/"
         egov-common-workflows: "http://egov-common-workflows:8080/"
         egov-mdms-service: "http://egov-mdms-service:8080/"
+        mdms-v2: "http://mdms-v2:8080/"
         egov-mdms-service-test: "http://egov-mdms-service-test:8080/"
         egov-mdms-create: "http://egov-mdms-create:8080/"
         egov-eis: "http://egov-eis:8080/"
@@ -148,13 +150,18 @@ cluster-configs:
         health-registration-service: "http://health-registration-service:8080/"
         health-delivery-service: "http://health-delivery-service:8080/"
         project: "http://project:8080/"
+        project-referral: "http://project-referral.egov:8080/"
         product: "http://product:8080/"
         household: "http://household:8080/"
+        household-referral: "http://household-referral:8080/"
+        boundary-service: "http://boundary-service.egov:8080/"
         individual: "http://individual:8080/"
+        individual-referral: "http://individual-referral:8080/"
         stock: "http://stock:8080/"
         facility: "http://facility:8080/"
         service-request: "http://service-request:8080/"
         attendance-service: "http://attendance.egov:8080/"
+
 
     hcm-moz-impl:
       data:

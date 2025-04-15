@@ -66,7 +66,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_LOCALIZATION_HOST
     valueFrom:
       configMapKeyRef:
@@ -98,7 +98,7 @@ env: |
         name: egov-service-host
         key: egov-user
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: "/egov-mdms-service/v1/_search"
+    value: "/mdms-v2/v1/_search"
   - name: PGR_KAFKA_CREATE_TOPIC
     value: "save-pgr-request"
   - name: PGR_KAFKA_UPDATE_TOPIC
@@ -146,7 +146,7 @@ env: |
   - name: JAVA_ARGS
     value: {{ index .Values "java-args" | quote }}
   - name: JAVA_ENABLE_DEBUG
-    value: {{ index .Values "java-enable-debug" | quote }}
+    value: "true"
   - name: SERVER_PORT
     value: "8080"
   - name: SECURITY_BASIC_ENABLED

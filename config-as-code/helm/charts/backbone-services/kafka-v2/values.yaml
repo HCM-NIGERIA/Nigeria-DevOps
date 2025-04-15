@@ -78,7 +78,7 @@ persistence:
   #  - f37a03aa-6212-4c62-a805-9ce139fab180
   #  - f37a03aa-6212-4c62-a805-9ce139fab180
   
-  dataDirSize: 100Gi
+  dataDirSize: 50Gi
 
 
 ## Pod Compute Resources

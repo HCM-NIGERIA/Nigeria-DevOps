@@ -109,7 +109,7 @@ volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
   resources:
     requests:
-      storage: 25Gi
+      storage: 100Gi
 
 rbac:
   create: false
@@ -150,7 +150,7 @@ persistence:
   #     diskUri: value
   #   - diskName: zookeeper-2
   #     diskUri: value
-  dataDirSize: "25Gi"
+  dataDirSize: "100Gi"
   annotations: {}
 
 extraVolumes: []
