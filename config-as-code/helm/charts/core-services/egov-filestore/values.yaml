@@ -32,6 +32,8 @@ heap: "-Xmx192m -Xms192m"
 file-storage-mount-path: "/filestore"
 is-nfs-enabled: false
 is-s3-enabled: true
+memory_limits: "512Mi"
+cpu_limits: "300m"
 
 persistence:
   enabled: false
@@ -50,6 +52,8 @@ env: |
     value: "/tmp"
   - name: SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE
     value: "6MB"
+  - name: ISAZURESTORAGEENABLED
+    value: "true"
   - name: ISNFSSTORAGEENABLED
     value: {{ index .Values "is-nfs-enabled" | quote }}
   {{- if index .Values "is-nfs-enabled" }}
@@ -79,17 +83,19 @@ env: |
         key: secretkey
         name: minio
   {{else}}
-  - name: AWS_KEY
+  - name: AZURE_ACCOUNTNAME
     valueFrom:
       secretKeyRef:
         name: egov-filestore
         key: awskey
-  - name: AWS_SECRETKEY
+  - name: AZURE_ACCOUNTKEY
     valueFrom:
       secretKeyRef:
         name: egov-filestore
         key: awssecretkey
   {{- end }}
+  - name: AZURE_DEFAULTENDPOINTSPROTOCOL
+    value: https
   {{- if index .Values "is-bucket-fixed" }}
   - name: IS_BUCKET_FIXED
     value: {{ index .Values "is-bucket-fixed" | quote }}

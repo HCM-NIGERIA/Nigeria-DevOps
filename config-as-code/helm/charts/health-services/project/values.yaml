@@ -115,9 +115,13 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: "/egov-mdms-service/v1/_search"
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: EGOV_MDMS_INTEGRATION_ENABLED
     value: "true"
   - name: EGOV_MDMS_MASTER_NAME
@@ -223,6 +227,10 @@ env: |
     value: "create-project-facility-bulk-topic"
   - name: PROJECT.FACILITY.CONSUMER.BULK.UPDATE.TOPIC
     value: "update-project-facility-bulk-topic"
+  - name: PROJECT_TASK_NO_RESOURCE_VALIDATION_STATUS
+    value: ADMINISTRATION_FAILED,BENEFICIARY_REFUSED,CLOSED_HOUSEHOLD,NOT_ADMINISTERED,BENEFICIARY_REFERRED,BENEFICIARY_INELIGIBLE
+  - name: EGOV.USER.ID.VALIDATOR
+    value: egov-user
   - name: EGOV_FACILITY_HOST
     valueFrom:
       configMapKeyRef:
@@ -233,10 +241,44 @@ env: |
   - name: PROJECT_MDMS_MODULE
     value: "HCM-PROJECT-TYPES"
   - name: EGOV_LOCATION_HIERARCHY_TYPE
-    value: "ADMIN"
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
   - name: EGOV_LOCATION_CODE_QUERY_PARAM
-    value: "codes"
+    value: "code"
+  - name: EGOV_BOUNDARY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_BOUNDARY_SEARCH_URL
+    value: "/boundary-service/boundary/_search"
+  - name: EGOV_BOUNDARY_HIERARCHY_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
+  - name: EGOV_LOCATION_HIERARCHY_TYPE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
+  - name: EGOV_LOCATION_CODE_QUERY_PARAM
+    value: "code"
   - name: EGOV_USER_ID_VALIDATOR
     value: "egov-user"
   - name: EGOV_PERSISTER_BULK_PROCESSING_ENABLED
     value: "false"
+  - name: PROJECT_USER_ACTION_TASK_KAFKA_CREATE_TOPIC
+    value: "save-user-action-project-task-health-topic"
+  - name: PROJECT_USER_ACTION_TASK_KAFKA_UPDATE_TOPIC
+    value: "update-user-action-project-task-health-topic"
+  - name: PROJECT_USER_ACTION_TASK_CONSUMER_BULK_CREATE_TOPIC
+    value: "save-user-action-project-task-bulk-health-topic"
+  - name: PROJECT_USER_ACTION_TASK_CONSUMER_BULK_UPDATE_TOPIC
+    value: "update-user-action-project-task-bulk-health-topic"
+  - name: PROJECT_LOCATION_CAPTURE_KAFKA_CREATE_TOPIC
+    value: "save-location-capture-project-health-topic"
+  - name: PROJECT_LOCATION_CAPTURE_CONSUMER_BULK_CREATE_TOPIC
+    value: "save-location-capture-project-bulk-health-topic"

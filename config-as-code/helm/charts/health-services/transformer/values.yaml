@@ -102,9 +102,13 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: "/egov-mdms-service/v1/_search"
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: PROJECT_MDMS_MODULE
     value: "HCM-PROJECT-TYPES"
   - name: EGOV_INDIVIDUAL_HOST
@@ -211,11 +215,17 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: household
-  - name: EGOV_USER_HOST
+  - name: SPRING_REDIS_HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-service-host
-        key: egov-user
+        name: egov-config
+        key: redis-host
+  - name: SPRING_REDIS_PORT
+    value: "6379"
+  - name: SPRING_CACHE_TYPE
+    value: "redis"
+  - name: SPRING_CACHE_REDIS_TIME-TO-LIVE
+    value: "60"
   - name: EGOV_ATTENDANCE_HOST
     valueFrom:
       configMapKeyRef:  
@@ -231,8 +241,30 @@ env: |
     value: transformer-save-attendance-register
   - name: EGOV_SEARCH_ATTENDANCE_REGISTER_URL
     value: /attendance/v1/_search
+  - name: EGOV_USER_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-user
   - name: EGOV_SEARCH_USER_URL
     value: /user/_search
+  - name: EGOV_LOCALIZATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
+  - name: EGOV_BOUNDARY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_BOUNDARY_SEARCH_URL
+    value: "/boundary-service/boundary/_search"
+  - name: EGOV_BOUNDARY_HIERARCHY_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
   - name: PROJECT_STAFF_ROLE_MDMS_MODULE
     value: HCM-PROJECT-STAFF-ROLES
   - name: EGOV_SEARCH_HOUSEHOLD_URL
@@ -245,3 +277,5 @@ env: |
     value: "3"
   - name: EGOV_PROGRAM_MANDATE_DIVIDING_FACTOR
     value: "1.8"
+  - name: EGOV_LOCALIZATION_LOCALE_CODE
+    value: en_NG

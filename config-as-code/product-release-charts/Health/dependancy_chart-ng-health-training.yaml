@@ -25,7 +25,7 @@ modules:
       - egovio/egov-enc-service:v2.9.0-aad7536fde-23
       - egovio/egov-filestore:DIGIT-2.9-LTS-237578ce80-14
       - egovio/egov-localization:v2.9.0-063968adc7-23
-      - egovio/health-idgen:ben-id-impl-561d09184a-31
+      - egovio/egov-idgen-db:v2.9.0-063968adc7-18 # health-idgen:ben-id-impl-561d09184a-31
       - egovio/egov-indexer:indexer-17-searchBody-1799f17903-57
 #      - egovio/egov-location:master-impel-60bd931a97-6
 #      - egovio/egov-mdms-service:v1.3.2-72f8a8f87b-12
@@ -67,7 +67,7 @@ modules:
       - egovio/stock:HDDF-2933-bauchi-stock-search-model-update-6ea483894d-63
       - egovio/household:dev-2fd1348b02-63
       - egovio/project:HDDF-1638-e0cc729ef6-34
-#      - egovio/hcm-moz-impl:develop-schisto-e50bcc4d-406
+      - egovio/hcm-moz-impl:develop-schisto-e50bcc4d-406
 #      - egovio/egov-mdms-create:develop-3a53c3b-3
       - egovio/referralmanagement:HCMPRE-2747-Identifier-changes-5b14c04064-90
-      - egovio/health-attendance:v1.0.2-c20992b0d-61
+      - egovio/health-attendance:v1.1.0-55e92c713-51 #health-attendance:v1.0.2-c20992b0d-61

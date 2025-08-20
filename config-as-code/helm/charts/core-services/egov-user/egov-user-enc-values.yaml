@@ -147,12 +147,18 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: EGOV_ENC_HOST
     valueFrom:
       configMapKeyRef:

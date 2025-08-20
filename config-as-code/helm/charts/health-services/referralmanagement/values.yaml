@@ -101,6 +101,18 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-location
+  - name: EGOV_BOUNDARY_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_BOUNDARY_SEARCH_URL
+    value: "/boundary-service/boundary/_search"
+  - name: EGOV_BOUNDARY_HIERARCHY_NAME
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
   - name: EGOV_LOCATION_CONTEXT_PATH
     value: "/egov-location/location/v11"
   - name: EGOV_LOCATION_ENDPOINT
@@ -109,9 +121,13 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: "/egov-mdms-service/v1/_search"
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: EGOV_MDMS_INTEGRATION_ENABLED
     value: "true"
   - name: EGOV_MDMS_MASTER_NAME
@@ -218,4 +234,6 @@ env: |
   - name: EGOV_LOCATION_HIERARCHY_TYPE
     value: "ADMIN"
   - name: EGOV_LOCATION_CODE_QUERY_PARAM
-    value: "codes"
+    value: "code"
+  - name: EGOV_ENABLE_MATVIEW_SEARCH
+    value: "true"
