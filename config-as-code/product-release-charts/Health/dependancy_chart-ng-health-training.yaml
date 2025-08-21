@@ -62,7 +62,7 @@ modules:
     services:
       - egovio/facility:v1.1.2-3f860f8a31-23
       - egovio/product:v1.1.0-00a7accbda-31
-      - egovio/individual:HCMPRE-2480-Beneficiary-ID-Generation-using-Id-gen-service-26d009ab42-62
+      - egovio/individual-db:beneficiary-idgen-master-f6f565f264-71
       - egovio/transformer:bauchi-transformer-fixes-14e6303cea-357
       - egovio/stock:HDDF-2933-bauchi-stock-search-model-update-6ea483894d-63
       - egovio/household:dev-2fd1348b02-63
@@ -71,3 +71,4 @@ modules:
 #      - egovio/egov-mdms-create:develop-3a53c3b-3
       - egovio/referralmanagement:HCMPRE-2747-Identifier-changes-5b14c04064-90
       - egovio/health-attendance:v1.1.0-55e92c713-51 #health-attendance:v1.0.2-c20992b0d-61
+      - egovio/beneficiary-idgen-db:dev-50b170c

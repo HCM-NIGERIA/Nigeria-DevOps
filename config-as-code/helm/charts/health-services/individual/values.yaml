@@ -65,6 +65,15 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: redis-host
+  - name: EGOV_BENEFICIARY_IDGEN_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: beneficiary-idgen
+  - name: INDIVIDUAL_BENEFICIARY_ID_VALIDATION_ENABLED
+    value: 'true'
+  - name: INDIVIDUAL_BENEFICIARY_ID_LENGTH
+    value: '9'
   - name: SPRING_REDIS_PORT
     value: "6379"
   - name: SPRING_CACHE_TYPE
