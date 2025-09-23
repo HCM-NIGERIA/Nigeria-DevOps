@@ -20,14 +20,14 @@ initContainers:
 # Container Configs
 image:
   repository: "egov-user"
-replicas: "2"
+replicas: "1"
 healthChecks:
   enabled: true
   livenessProbePath: "/user/health"
   readinessProbePath: "/user/health"
 appType: "java-spring"
 tracing-enabled: true
-egov-state-level-tenant-id: "pb"
+
 decryption-abac-enabled: "false"
 account-unlock-cool-down-period-minutes: "30"
 otp-validation: "true"
@@ -43,11 +43,14 @@ citizen-otp-fixed: "123456"
 citizen-otp-fixed-enabled: "true"
 heap: "-Xmx192m -Xms192m"
 java-args: ""
+java-enable-debug: "true"
 
 # Additional Container Envs
 env: |
   - name: SERVER_PORT
     value: "8080"
+  - name: JAVA_ENABLE_DEBUG
+    value: {{ index .Values "java-enable-debug" | quote }}
   - name: SPRING_REDIS_HOST
     valueFrom:
       configMapKeyRef:
@@ -61,7 +64,10 @@ env: |
         name: egov-service-host
         key: egov-otp
   - name: EGOV_USER_HOST
-    value: "http://localhost:8080"
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-user
   - name: EGOV_SERVICES_ACCESSCONTROL_HOST
     valueFrom:
       configMapKeyRef:
@@ -76,17 +82,28 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: "/mdms-v2/v1/_search"
+  - name: EGOV_MDMS_PATH
+    value: "/mdms-v2/v1/_search"
+  - name: MDMS_PATH
+    value: "/mdms-v2/v1/_search"
   - name: EGOV_ENC_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-enc-service
+  - name: EGOV_LOCALIZATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
   - name: EGOV_STATE_LEVEL_TENANT_ID
     valueFrom:
       configMapKeyRef:
@@ -97,10 +114,6 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
-  - name: EGOV_USER_MOBILE_PATTERN
-    value: "(^$|[0-9]{9,11})"
-  - name: EGOV_USER_PWD_PATTERN
-    value: "((?=.*\\d)(?=.*[a-z])(?=.*[@#$%])(?=\\S+$).*$)"
   - name: DECRYPTION_ABAC_ENABLED
     value: {{ index .Values "decryption-abac-enabled" | quote }}
   - name: KAFKA_TOPIC_AUDIT
@@ -173,3 +186,5 @@ env: |
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 
   {{- end }}
+  - name: EGOV_USER_PWD_PATTERN
+    value: ((?=.*\d)(?=.*[a-z])(?=.*[@#$%])(?=\S+$).*$)
