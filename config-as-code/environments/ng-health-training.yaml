@@ -1,5 +1,5 @@
 global:
-  domain: training.hcm-kano.org
+  domain: training-hcm-kano.digit.org
   setup: fullsetup
 
 cluster-configs:
@@ -16,8 +16,8 @@ cluster-configs:
         db-host: "ng-health-training-db.cp2402gi2u8g.af-south-1.rds.amazonaws.com" ## Add db-host name eg: egov-demo.database.azure.com
         db-name: "nghealthtraining" ## Add db-name
         db-url: "jdbc:postgresql://ng-health-training-db.cp2402gi2u8g.af-south-1.rds.amazonaws.com:5432/nghealthtraining" ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-        domain: "training.hcm-kano.org" ## Add your Domain Name
-        egov-services-fqdn-name: "https://training.hcm-kano.org/" ## Add your Domain Name
+        domain: "training-hcm-kano.digit.org" ## Add your Domain Name
+        egov-services-fqdn-name: "https://training-hcm-kano.digit.org/" ## Add your Domain Name
         redis-host: "redis.backbone"
         aws-cluster-ip: "https://FC8672C00F2EFBAFAE5C6F45F5DF6267.sk1.af-south-1.eks.amazonaws.com"
         aws-region: "af-south-1"
