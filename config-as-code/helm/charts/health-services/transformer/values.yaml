@@ -98,6 +98,12 @@ env: |
         key: egov-location
   - name: EGOV_SEARCH_PROJECT_URL
     value: "/project/v1/_search"
+  - name: EGOV_SEARCH_PROJECT_URL
+    value: "/project/v1/_search"
+  - name: EGOV_SEARCH_PROJECT_URL
+    value: "/project/v1/_search"
+  - name: EGOV_SEARCH_PROJECT_URL
+    value: "/project/v1/_search"
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
@@ -253,6 +259,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-localization
+  - name: EGOV_LOCALIZATION_MODULE_NAME
+    value: 'hcm-boundary-admin'
   - name: EGOV_BOUNDARY_HOST
     valueFrom:
       configMapKeyRef:
