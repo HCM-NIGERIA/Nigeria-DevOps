@@ -61,11 +61,11 @@ modules:
       - egovio/facility:master-impel-82abd11612-46
       - egovio/product:master-impel-9e32e9c097-22
       - egovio/individual:master-impel-a6b7c7203c-213
-      - egovio/transformer:schisto-individual-info-4e8392ce31-299
+      - egovio/transformer:bauchi-transformer-fixes-irs-d07f346661-372
       - egovio/stock:master-impel-9ebd806fe1-71
       - egovio/household:master-impel-fc710d7583-110
       - egovio/project:master-impel-82abd11612-195
-      - egovio/hcm-moz-impl:develop-schisto-e50bcc4d-406
+      - egovio/hcm-moz-impl:kano-polio1-665be654-454
       - egovio/egov-mdms-create:develop-3a53c3b-3
       - egovio/referralmanagement:referral-changes-5133a15b0f-114
       - egovio/attendance:master-impel-ea8682f3-55
