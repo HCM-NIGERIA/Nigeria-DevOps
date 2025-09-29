@@ -781,8 +781,8 @@ hcm-moz-impl:
   replicas: 1
   heap: "-Xmx1024m -Xms1024m"
   memory_limits: "1.5Gi"
-  startDate: "15/05/2024"
-  endDate: "05/06/2024"
+  startDate: "01/10/2025"
+  endDate: "01/11/2025"
 #  resources:
 #    requests:
 #      memory: "2Gi"
