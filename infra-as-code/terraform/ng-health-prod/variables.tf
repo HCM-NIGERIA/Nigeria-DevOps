@@ -26,12 +26,12 @@ variable "availability_zones" {
 
 variable "kubernetes_version" {
   description = "kubernetes version"
-  default = "1.30"
+  default = "1.31"
 }
 
 variable "instance_types" {
   description = "eGov recommended below instance type as a default"
-  default = ["m5.xlarge"]
+  default = ["r6i.xlarge"]
 }
 
 variable "min_worker_nodes" {

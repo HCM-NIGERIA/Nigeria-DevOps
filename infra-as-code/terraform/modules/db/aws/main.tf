@@ -31,6 +31,7 @@ resource "aws_db_instance" "rds_postgres" {
 
     tags = "${
     tomap({
+      "AutoStop"    = "false"
       "Name" =  "${var.environment}-db",
       "environment" = "${var.environment}"
     })
