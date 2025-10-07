@@ -11,6 +11,8 @@ ingress:
 
 # Init Containers Configs
 initContainers:
+  gitSync:
+    enabled: true
   dbMigration:
     enabled: true
     schemaTable: "audit_service_schema"

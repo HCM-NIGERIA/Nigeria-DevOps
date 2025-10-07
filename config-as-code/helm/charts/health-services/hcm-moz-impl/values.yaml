@@ -71,7 +71,7 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: egov-mdms-service
+        key: mdms-v2
   - name: EGOV_ATTENDANCE_HOST
     valueFrom:
       configMapKeyRef:  
@@ -416,4 +416,45 @@ env: |
   - name: TRACER_OPENTRACING_ENABLED
     value: "true" 
   {{- end }}
+  - name: EGOV_BOUNDARY_HIERARCHYTYPE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
+  - name: EGOV_BOUNDARYV2_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: boundary-service
+  - name: EGOV_MDMSV2_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: mdms-v2
+  - name: EGOV_BOUNDARY_LOCALIZATION_MODULE
+    value: rainmaker-boundary-admin
+  - name: EGOV_BOUNDARY_LOCALIZATION_LOCALE
+    value: en_NG
+  - name: EGOV_LOCALIZATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
+  - name: EGOV_BOUNDARY_LOCALIZATION_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-localization
+  - name: EGOV_ATTENDANCE_SESSIONS
+    value: "1"
+  - name: EGOV_BOUNDARY_HIERARCHY_TYPE
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: boundary-hierarchy
+  - name: EGOV_BOUNDARY_LOCALIZATION_PREFIX
+  - name: EGOV_INGESTION_INTERVAL_MIN_DATE
+    value: "1737552887000"
+  - name: EGOV_INGESTION_INTERVAL_MAX_DATE
+    value: "1757639287000"
   
